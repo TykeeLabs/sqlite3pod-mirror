@@ -16,6 +16,7 @@ LICENSE
   archive_name = "sqlite-src-"+v[0]+v[1].rjust(2, '0')+v[2].rjust(2, '0')+"00"
   s.source   = { :http => "https://github.com/TykeeLabs/sqlite3pod-mirror/raw/master/static/2023/#{archive_name}.zip" }
   s.prepare_command = <<-CMD
+[[ ! -d "./#{archive_name}" ]] && unzip static/2023/#{archive_name} -d .
 cd #{archive_name}
 ./configure
 make sqlite3.c sqlite3.h sqlite3ext.h
